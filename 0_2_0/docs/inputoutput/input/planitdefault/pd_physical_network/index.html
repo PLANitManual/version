@@ -1,0 +1,4034 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.70.0" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/version/0_1_0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/version/0_1_0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Physical Network Input Data format (XML) | PLANit</title><meta property="og:title" content="Physical Network Input Data format (XML)" />
+<meta property="og:description" content="In this section of the manual we discuss the physical network&rsquo;s XML input format used by PLANit.
+ If you are only interested to see an example file, jump to the Expanded Example. XML Schema of macroscopic network https://planitmanual.github.io/version//xsd/macroscopicnetworkinput.xsd  &lt;macroscopicnetwork&gt; Physical Network can be described in a stand alone XML file - only describing the network characteristics - or as part of a PLANit XML file describing all input components." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://planitmanual.github.io/version/0_1_0/docs/inputoutput/input/planitdefault/pd_physical_network/" />
+<meta property="og:site_name" content="PLANit" />
+<meta itemprop="name" content="Physical Network Input Data format (XML)">
+<meta itemprop="description" content="In this section of the manual we discuss the physical network&rsquo;s XML input format used by PLANit.
+ If you are only interested to see an example file, jump to the Expanded Example. XML Schema of macroscopic network https://planitmanual.github.io/version//xsd/macroscopicnetworkinput.xsd  &lt;macroscopicnetwork&gt; Physical Network can be described in a stand alone XML file - only describing the network characteristics - or as part of a PLANit XML file describing all input components.">
+
+<meta itemprop="wordCount" content="4417">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Physical Network Input Data format (XML)"/>
+<meta name="twitter:description" content="In this section of the manual we discuss the physical network&rsquo;s XML input format used by PLANit.
+ If you are only interested to see an example file, jump to the Expanded Example. XML Schema of macroscopic network https://planitmanual.github.io/version//xsd/macroscopicnetworkinput.xsd  &lt;macroscopicnetwork&gt; Physical Network can be described in a stand alone XML file - only describing the network characteristics - or as part of a PLANit XML file describing all input components."/>
+
+
+
+
+
+<link rel="preload" href="/version/0_1_0/scss/main.min.efdc754742f91a7d8116abf05ef20b5c792da0321b24e577c7126b76b66bbb67.css" as="style">
+<link href="/version/0_1_0/scss/main.min.efdc754742f91a7d8116abf05ef20b5c792da0321b24e577c7126b76b66bbb67.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/version/0_1_0/">
+		<span class="navbar-logo"><img src="/version/0_1_0/img/PLANit_icon.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/version/0_1_0/about/" ><span>About</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/version/0_1_0/installation/" ><span>Installation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/version/0_1_0/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/version/0_1_0/community/" ><span>Community</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://trafficplanit.github.io/PLANitManual">development</a>
+	
+	<a class="dropdown-item" href="https://planitmanual.github.io/version/0_1_0">v0.1.0</a>
+	
+	<a class="dropdown-item" href="https://planitmanual.github.io/version/0_2_0">v0.2.0</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="version0_1_0docs">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/overview/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Overview</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsoverview">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/getting-started/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Getting started</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsgetting-started">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/inputoutput/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Data formats</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="version0_1_0docsinputoutput">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/inputoutput/input/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Input</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="version0_1_0docsinputoutputinput">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/inputoutput/input/planitdefault/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Default</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="version0_1_0docsinputoutputinputplanitdefault">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-version0_1_0docsinputoutputinputplanitdefaultpd_physical_network" href="/version/0_1_0/docs/inputoutput/input/planitdefault/pd_physical_network/">&lt;macroscopicnetwork&gt;</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsinputoutputinputplanitdefaultpd_zoning_structure" href="/version/0_1_0/docs/inputoutput/input/planitdefault/pd_zoning_structure/">&lt;macroscopiczoning&gt;</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsinputoutputinputplanitdefaultpd_demands" href="/version/0_1_0/docs/inputoutput/input/planitdefault/pd_demands/">&lt;macroscopicdemand&gt;</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/inputoutput/output/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Output</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsinputoutputoutput">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/inputoutput/output/planitdefault/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Default</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsinputoutputoutputplanitdefault">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsinputoutputoutputplanitdefaultpd_meta_data" href="/version/0_1_0/docs/inputoutput/output/planitdefault/pd_meta_data/">XML meta-data</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsinputoutputoutputlink_support" href="/version/0_1_0/docs/inputoutput/output/link_support/">Link</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsinputoutputoutputod_support" href="/version/0_1_0/docs/inputoutput/output/od_support/">OD</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsinputoutputoutputpath_support" href="/version/0_1_0/docs/inputoutput/output/path_support/">Path</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">PLANit-Python</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspython">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/getting-started/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Getting Started</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythongetting-started">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/examples/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Examples</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonexamples">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreference">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/planit&#43;/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">PLANit(&#43;)</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceplanit">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_activate" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_activate&#43;/">.activate(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_deactivate" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_deactivate&#43;/">.deactivate(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_run" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_run/">.run()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_set" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_set&#43;/">.set(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_assignment" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_assignment/">.assignment</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_demands" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_demands/">.demands</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_initial_costs" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_initial_costs/">.initial_costs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_memory" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_memory/">.memory</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_network" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_network/">.network</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_output" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_output/">.output</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceplanitplanit_zoning" href="/version/0_1_0/docs/python/reference/planit&#43;/planit_zoning/">.zoning</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/assignment/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Assignment</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceassignment">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Traditional static</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceassignmenttraditionalstatic">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_activate_output" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_activate_output&#43;/">.activate_output(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_deactivate_output" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_deactivate_output&#43;/">.deactivate_output(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_set" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_set&#43;/">.set(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_gap_function" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_gap_function/">.gap_function</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_link_configuration" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_link_configuration/">.link_configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_od_configuration" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_od_configuration/">.od_configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_output_configuration" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_output_configuration/">.output_configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_path_configuration" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_path_configuration/">.path_configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_physical_cost" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_physical_cost/">.physical_cost</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_smoothing" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_smoothing/">.smoothing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceassignmenttraditionalstatictsa_virtual_cost" href="/version/0_1_0/docs/python/reference/assignment/traditionalstatic/tsa_virtual_cost/">.virtual_cost</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/demands/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Demands</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencedemands">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/enums/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Enums</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceenums">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumsodskimsuboutputtype" href="/version/0_1_0/docs/python/reference/enums/odskimsuboutputtype/">ODSkimSubOutputType</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumsoutputformattertype" href="/version/0_1_0/docs/python/reference/enums/outputformattertype/">OutputFormatter</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumsoutputpropertytype" href="/version/0_1_0/docs/python/reference/enums/outputpropertytype/">OutputProperty</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumsoutputtype" href="/version/0_1_0/docs/python/reference/enums/outputtype/">OutputType</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumspathidtype" href="/version/0_1_0/docs/python/reference/enums/pathidtype/">PathIdType</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumsphysicalcosttype" href="/version/0_1_0/docs/python/reference/enums/physicalcosttype/">PhysicalCost</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumssmoothingtype" href="/version/0_1_0/docs/python/reference/enums/smoothingtype/">Smoothing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumsvirtualcosttype" href="/version/0_1_0/docs/python/reference/enums/virtualcosttype/">VirtualCost</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceenumstrafficassignmenttype" href="/version/0_1_0/docs/python/reference/enums/trafficassignmenttype/">TrafficAssignment</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/gapfunction/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Gap Function</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencegapfunction">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/gapfunction/linkbasedrelative/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Link Based Relative</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencegapfunctionlinkbasedrelative">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencegapfunctionlinkbasedrelativelbrgf_stop_criterion" href="/version/0_1_0/docs/python/reference/gapfunction/linkbasedrelative/lbrgf_stop_criterion/">.stop_criterion</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/initialcost/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Initial Cost</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceinitialcost">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceinitialcostic_set" href="/version/0_1_0/docs/python/reference/initialcost/ic_set&#43;/">.set(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputconfiguration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Output Configuration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputconfiguration">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputconfiguration/general/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">General</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputconfigurationgeneral">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationgeneraloc_is_only_final" href="/version/0_1_0/docs/python/reference/outputconfiguration/general/oc_is_only_final/">.is_persist_only_final_iteration()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationgeneraloc_is_persist_zero_flow" href="/version/0_1_0/docs/python/reference/outputconfiguration/general/oc_is_persist_zero_flow/">.is_persist_zero_flow()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationgeneraloc_set_only_final" href="/version/0_1_0/docs/python/reference/outputconfiguration/general/oc_set_only_final&#43;/">.set_persist_only_final_iteration(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationgeneraloc_set_persist_zero_flow" href="/version/0_1_0/docs/python/reference/outputconfiguration/general/oc_set_persist_zero_flow&#43;/">.set_persist_zero_flow(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputconfiguration/link/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Link</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputconfigurationlink">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationlinklc_add" href="/version/0_1_0/docs/python/reference/outputconfiguration/link/lc_add&#43;/">.add(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationlinklc_remove" href="/version/0_1_0/docs/python/reference/outputconfiguration/link/lc_remove&#43;/">.remove(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationlinklc_remove_all" href="/version/0_1_0/docs/python/reference/outputconfiguration/link/lc_remove_all/">.remove_all_properties()</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputconfiguration/od/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">OD</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputconfigurationod">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationododc_activate" href="/version/0_1_0/docs/python/reference/outputconfiguration/od/odc_activate&#43;/">.activate(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationododc_add" href="/version/0_1_0/docs/python/reference/outputconfiguration/od/odc_add&#43;/">.add(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationododc_deactivate" href="/version/0_1_0/docs/python/reference/outputconfiguration/od/odc_deactivate&#43;/">.deactivate(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationododc_remove" href="/version/0_1_0/docs/python/reference/outputconfiguration/od/odc_remove&#43;/">.remove(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationododc_remove_all" href="/version/0_1_0/docs/python/reference/outputconfiguration/od/odc_remove_all/">.remove_all_properties()</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputconfiguration/path/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Path</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputconfigurationpath">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationpathpc_add" href="/version/0_1_0/docs/python/reference/outputconfiguration/path/pc_add&#43;/">.add(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationpathpc_remove" href="/version/0_1_0/docs/python/reference/outputconfiguration/path/pc_remove&#43;/">.remove(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationpathpc_remove_all" href="/version/0_1_0/docs/python/reference/outputconfiguration/path/pc_remove_all/">.remove_all_properties()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputconfigurationpathpc_set_path_id_type" href="/version/0_1_0/docs/python/reference/outputconfiguration/path/pc_set_path_id_type&#43;/">.set_path_id_type(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputformatters/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Output Formatters</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputformatters">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputformatters/default/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Default</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputformattersdefault">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_csv_directory" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_csv_directory&#43;/">.set_csv_directory(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_csv_extension" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_csv_extension&#43;/">.set_csv_name_extension(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_csv_prefix" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_csv_prefix&#43;/">.set_csv_name_root(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_description" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_description&#43;/">.set_description(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_output_directory" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_output_directory&#43;/">.set_output_directory(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_xml_directory" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_xml_directory&#43;/">.set_xml_directory(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_xml_extension" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_xml_extension&#43;/">.set_xml_name_extension(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersdefaultdof_set_xml_prefix" href="/version/0_1_0/docs/python/reference/outputformatters/default/dof_set_xml_prefix&#43;/">.set_xml_name_root(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputformatters/memory/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Memory</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputformattersmemory">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemorymof_last_iteration" href="/version/0_1_0/docs/python/reference/outputformatters/memory/mof_last_iteration/">.get_last_iteration()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemorymof_position_value_property" href="/version/0_1_0/docs/python/reference/outputformatters/memory/mof_position_value_property&#43;/">.get_position_of_output_key_property(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemorymof_position_key_property" href="/version/0_1_0/docs/python/reference/outputformatters/memory/mof_position_key_property&#43;/">.get_position_of_output_value_property(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemorymof_iterator" href="/version/0_1_0/docs/python/reference/outputformatters/memory/mof_iterator&#43;/">.iterator(&#43;)</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/outputformatters/memory/iterator/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Iterator</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferenceoutputformattersmemoryiterator">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemoryiteratormofi_get_keys" href="/version/0_1_0/docs/python/reference/outputformatters/memory/iterator/mofi_get_keys/">.get_keys()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemoryiteratormofi_get_values" href="/version/0_1_0/docs/python/reference/outputformatters/memory/iterator/mofi_get_values/">.get_values()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemoryiteratormofi_has_next" href="/version/0_1_0/docs/python/reference/outputformatters/memory/iterator/mofi_has_next/">.has_next()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferenceoutputformattersmemoryiteratormofi_next" href="/version/0_1_0/docs/python/reference/outputformatters/memory/iterator/mofi_next/">.next()</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/physicalcost/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Physical Cost</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencephysicalcost">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/physicalcost/bpr/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">BPR</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencephysicalcostbpr">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencephysicalcostbprbpr_set_default_parameters" href="/version/0_1_0/docs/python/reference/physicalcost/bpr/bpr_set_default_parameters&#43;/">.set_default_parameters&#43;</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencephysicalcostbprbpr_set_parameters" href="/version/0_1_0/docs/python/reference/physicalcost/bpr/bpr_set_parameters&#43;/">.set_parameters&#43;</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/network/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Physical Network</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencenetwork">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/smoothing/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Smoothing</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencesmoothing">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/smoothing/msa/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">MSA</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencesmoothingmsa">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/stopcriterion/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Stop Criterion</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencestopcriterion">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/stopcriterion/default/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Default</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencestopcriteriondefault">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencestopcriteriondefaultdsc_get_epsilon" href="/version/0_1_0/docs/python/reference/stopcriterion/default/dsc_get_epsilon/">.get_epsilon()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencestopcriteriondefaultdsc_get_max_iterations" href="/version/0_1_0/docs/python/reference/stopcriterion/default/dsc_get_max_iterations/">.get_max_iterations()</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencestopcriteriondefaultdsc_set_epsilon" href="/version/0_1_0/docs/python/reference/stopcriterion/default/dsc_set_epsilon&#43;/">.set_epsilon(&#43;)</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencestopcriteriondefaultdsc_set_max_iterations" href="/version/0_1_0/docs/python/reference/stopcriterion/default/dsc_set_max_iterations&#43;/">.set_max_iterations(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/virtualcost/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Virtual Cost</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencevirtualcost">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/virtualcost/fixed/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Fixed</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencevirtualcostfixed">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencevirtualcostfixedset_fixed_cost" href="/version/0_1_0/docs/python/reference/virtualcost/fixed/set_fixed_cost&#43;/">.set_fixed_connectoid_cost(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/virtualcost/speed/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Speed</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencevirtualcostspeed">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docspythonreferencevirtualcostspeedset_fixed_speed" href="/version/0_1_0/docs/python/reference/virtualcost/speed/set_fixed_speed&#43;/">.set_fixed_connectoid_cost(&#43;)</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/zoning/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Zoning</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencezoning">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/python/reference/testing/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section"></a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docspythonreferencetesting">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/java/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">PLANit-Java</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsjava">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/java/getting-started/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Getting Started</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsjavagetting-started">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/java/examples/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Examples</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsjavaexamples">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsjavaexamplesproject_examples" href="/version/0_1_0/docs/java/examples/project_examples/">Project</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsjavaexamplesinitial_cost_examples" href="/version/0_1_0/docs/java/examples/initial_cost_examples/">Initial cost</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsjavaexamplesta_examples" href="/version/0_1_0/docs/java/examples/ta_examples/">Traffic assignment</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsjavaexamplesinput_examples" href="/version/0_1_0/docs/java/examples/input_examples/">Input</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-version0_1_0docsjavaexamplesoutput_examples" href="/version/0_1_0/docs/java/examples/output_examples/">Output</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/java/download/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Downloads</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsjavadownload">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/units/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Units</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsunits">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/contribution-guidelines/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Contribution Guidelines</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docscontribution-guidelines">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/licenses/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Licenses</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docslicenses">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/version/0_1_0/docs/release-log/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Release log</a>
+  </li>
+  <ul>
+    <li class="collapse " id="version0_1_0docsrelease-log">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#macroscopicnetwork">&lt;macroscopicnetwork&gt;</a></li>
+    <li><a href="#available-predefined-modes">Available predefined modes</a></li>
+    <li><a href="#network-defaults">Network defaults</a>
+      <ul>
+        <li><a href="#default-mode">Default Mode</a></li>
+        <li><a href="#default-link-segment-type">Default Link Segment Type</a></li>
+        <li><a href="#default-link-segment-type-mode-properties">Default Link Segment Type Mode Properties</a></li>
+      </ul>
+    </li>
+    <li><a href="#xml-elements">XML Elements</a></li>
+    <li><a href="#configuration"><strong>&lt;configuration&gt;</strong></a>
+      <ul>
+        <li><a href="#-modes">&lt;&gt; <strong>&lt;modes&gt;</strong></a></li>
+        <li><a href="#-mode">&lt;&gt;&lt;&gt; <strong>&lt;mode&gt;</strong></a></li>
+        <li><a href="#-physicalfeatures">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;physicalfeatures&gt;</strong></a></li>
+        <li><a href="#-usabilityfeatures">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;usabilityfeatures&gt;</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#infrastructurelayers">&lt;infrastructurelayers&gt;</a>
+      <ul>
+        <li><a href="#layer">&lt;layer&gt;</a></li>
+        <li><a href="#-layerconfiguration">&lt;&gt; <strong>&lt;layerconfiguration&gt;</strong></a></li>
+        <li><a href="#-linksegmenttypes">&lt;&gt; <strong>&lt;linksegmenttypes&gt;</strong></a></li>
+        <li><a href="#-linksegmenttype">&lt;&gt;&lt;&gt; <strong>&lt;linksegmenttype&gt;</strong></a></li>
+        <li><a href="#-access">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;access&gt;</strong></a></li>
+        <li><a href="#-mode-1">&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;mode&gt;</strong></a></li>
+        <li><a href="#-nodes">&lt;&gt; <strong>&lt;nodes&gt;</strong></a></li>
+        <li><a href="#-node">&lt;&gt;&lt;&gt; <strong>&lt;node&gt;</strong></a></li>
+        <li><a href="#-links">&lt;&gt; <strong>&lt;links&gt;</strong></a></li>
+        <li><a href="#-link">&lt;&gt;&lt;&gt; <strong>&lt;link&gt;</strong></a></li>
+        <li><a href="#-linksegment">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;linksegment&gt;</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#expanded-example">Expanded Example</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://planitmanual.github.io/version/0_1_0/docs/">Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://planitmanual.github.io/version/0_1_0/docs/inputoutput/">Data formats</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://planitmanual.github.io/version/0_1_0/docs/inputoutput/input/">Input</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://planitmanual.github.io/version/0_1_0/docs/inputoutput/input/planitdefault/">Default</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://planitmanual.github.io/version/0_1_0/docs/inputoutput/input/planitdefault/pd_physical_network/">&lt;macroscopicnetwork&gt;</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Physical Network Input Data format (XML)</h1>
+    
+	       
+	<p>In this section of the manual we discuss the physical network&rsquo;s XML input format used by PLANit.</p>
+<ul>
+<li>If you are only interested to see an example file, jump to the <a href="./#expanded-example">Expanded Example</a>.</li>
+<li>XML Schema of macroscopic network <a href="../../../../../xsd/macroscopicnetworkinput.xsd">https://planitmanual.github.io/version/<version>/xsd/macroscopicnetworkinput.xsd</a></li>
+</ul>
+<h2 id="macroscopicnetwork">&lt;macroscopicnetwork&gt;</h2>
+<p>Physical Network can be described in a stand alone XML file - only describing the network characteristics - or as part of a PLANit XML file describing all input components. Either way, all physical transport network infrastructure is enclosed within the XML root element <code>&lt;macroscopicnetwork&gt;</code>. When part of a larger (single) PLANit input file, the structure should resemble something like the following:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;PLANit</span>	<span style="color:#c4a000">xmlns:xsi=</span><span style="color:#4e9a06">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+		<span style="color:#c4a000">xmlns:gml=</span><span style="color:#4e9a06">&#34;http://www.opengis.net/gml&#34;</span>											
+		<span style="color:#c4a000">xsi:noNamespaceSchemaLocation=</span><span style="color:#4e9a06">&#34;https://planitmanual.github.io/version/&lt;version&gt;/xsd/macroscopicinput.xsd&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;macroscopicnetwork&gt;</span>
+		...
+	<span style="color:#204a87;font-weight:bold">&lt;/macroscopicnetwork&gt;</span>
+	...
+<span style="color:#204a87;font-weight:bold">&lt;/PLANit&gt;</span>
+</code></pre></div><p>Whereas if, it is a stand-alone file, it should look something like</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;macroscopicnetwork</span>
+	 <span style="color:#c4a000">xmlns:xsi=</span><span style="color:#4e9a06">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+	 <span style="color:#c4a000">xmlns:gml=</span><span style="color:#4e9a06">&#34;http://www.opengis.net/gml&#34;</span> 	 <span style="color:#c4a000">xsi:noNamespaceSchemaLocation=</span><span style="color:#4e9a06">&#34;https://planitmanual.github.io/version/&lt;version&gt;/xsd/macroscopicnetworkinput.xsd&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+...	
+<span style="color:#204a87;font-weight:bold">&lt;/macroscopicnetwork&gt;</span>
+</code></pre></div><p>This root element can contain only two sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#configuration"><code>&lt;configuration&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">General configuration of network as a whole (modes, etc.)</td>
+</tr>
+<tr>
+<td align="left"><a href="./#infrastructurelayers"><code>&lt;infrastructurelayers&gt;</code></a></td>
+<td align="left">YES</td>
+<td align="left">1</td>
+<td align="left">Network content</td>
+</tr>
+</tbody>
+</table>
+<p>the configuraton deals with overall configuration options across all infrastructure layers. Each infrastructure layer within the infrastructure layers element defines physical infrastructure for one or more of network modes.</p>
+<p>In the remainder of this page, we discuss each of the eligible XML elements in order of expected appearance in detail. We explore their attributes, sub-elements, or simple elements (elements without sub-elements). At the bottom of the page an <a href="./#expanded-example">expanded example</a> is provided highlighting all the available options explicitly.</p>
+<p>Before we do so, we discuss the default values for (optional) element(s). These defaults are only relevant when you do not explicitly configure the related elements explicitly in the XML input file. Only then, PLANit will revert to these <a href="./#network-defaults">defaults</a>.</p>
+<p>Lastly, PLANit comes with a number of predefined modes. When these modes are activated in the network file, the user only needs to specify their name, the properties, e.g., pcu value, features, will be populated based on the mode&rsquo;s defaults.</p>
+<h2 id="available-predefined-modes">Available predefined modes</h2>
+<p>A predefined mode can be activated by creating a new mode under the <a href="./#-modes">modes element</a> and set its name to the name outlined for the predefined mode. PLANit provides the following predefined modes &ldquo;out of the box&rdquo;.</p>
+<blockquote>
+<p>Predefined mode names are protected, meaning that if you attempt to define your own mode with its own attributes but use a predefined mode&rsquo;s name (id). PLANit will overwrite your settings with the defaults.</p>
+</blockquote>
+<p><strong>Bicycle:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;bicycle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;bicycle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>15</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>0.2</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;non_motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;private&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bus:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;bus&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;bus&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>100</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>2</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;public&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Car:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;car&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;car&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>130</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>1</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;private&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Car high-occupancy:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;car_hov&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;car_hov&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>130</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>1</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;high_occupancy&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Car ride-share:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;car_share&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;car_share&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>130</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>1</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;ride_share&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Goods:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;gv&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;gv&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>100</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>1.8</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;goods&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Heavy goods:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;hgv&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;hgv&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>90</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>2.5</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;goods&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Large heavy goods:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;lhgv&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;lhgv&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>90</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>3</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;goods&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Light-rail:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;light_rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;light_rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>70</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>6</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;public&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Motor bike:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;motor_bike&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;motor_bike&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>130</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>0.5</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;private&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pedestrian:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;pedestrian&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;pedestrian&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>5</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>0.1</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;no_vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;non_motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;private&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Subway:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;subway&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;subway&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>60</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>6</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;public&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Train:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;train&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;train&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>140</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>10</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;public&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tram:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;tram&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the mode</td>
+</tr>
+<tr>
+<td align="left">(XML) Id</td>
+<td align="left"><code>&quot;tram&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">XML id to reference the mode</td>
+</tr>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>40</code></td>
+<td align="left">float</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left">Pcu</td>
+<td align="left"><code>3</code></td>
+<td align="left">float</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">Passenger Car Unit</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">vehicular type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">motorisation type of the mode</td>
+</tr>
+<tr>
+<td align="left">PhysicalFeatures.tracktype</td>
+<td align="left"><code>&quot;rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">track type of the mode</td>
+</tr>
+<tr>
+<td align="left">usabilityfeatures.usedtotype</td>
+<td align="left"><code>&quot;public&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">how this mode is used</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-defaults">Network defaults</h2>
+<p>Each network entity/element&rsquo;s defaults are listed below.</p>
+<h3 id="default-mode">Default Mode</h3>
+<p>When no modes are specified under the <a href="./#configuration"><code>&lt;configuration&gt;</code></a> the single predefined mode of type <code>car</code> is created to represent all modes, see <a href="./#available-predefined-modes">predefined modes</a>.</p>
+<ul>
+<li>No explicit references to modes are to be made in other XML elements with optional mode attributes because there is no mode to explicitly refer to.</li>
+<li>It is assumed that all link segments are accessible to the default mode and that all demand utilises this default mode of travel.</li>
+</ul>
+<h3 id="default-link-segment-type">Default Link Segment Type</h3>
+<p>When no link segment types are specified under any <a href="./#-layerconfiguration"><code>&lt;layerconfiguration&gt;</code></a> a single default link segment type is created that is applied to all link segments. In that case, the default link segment type accepts all available modes.</p>
+<p>The <strong>Default Link Segment Type</strong> has the following characteristics:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">Value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Name</td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">Name of the link segment type</td>
+</tr>
+<tr>
+<td align="left">Maxdensitylane</td>
+<td align="left"><code>180</code></td>
+<td align="left">double</td>
+<td align="left"><code>pcu/l</code></td>
+<td align="left">Maximum density per lane in pcu</td>
+</tr>
+<tr>
+<td align="left">Capacitylane</td>
+<td align="left"><code>1800</code></td>
+<td align="left">double</td>
+<td align="left"><code>pcu/l/h</code></td>
+<td align="left">maximum flow per lane in pcu</td>
+</tr>
+<tr>
+<td align="left">Mode specific properties</td>
+<td align="left"><a href="./#link-segment-type-mode-properties">Default Mode properties</a></td>
+<td align="left">N/A</td>
+<td align="left"><code>None</code></td>
+<td align="left">The default mode specific properties for a link segment type</td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-link-segment-type-mode-properties">Default Link Segment Type Mode Properties</h3>
+<p>When one or more mode specific properties are not specified for a mode when configuring the <code>&lt;linksegmenttype&gt;</code> element under <a href="./#layer-configuration"><code>&lt;layerconfiguration&gt;</code></a> default values will be applied. It is not advisable to leave this out for anything else but testing purposes, since it is unlikely that the defaults accurately reflect the true conditions.</p>
+<p>The <strong>Default Link Segment Type Mode Properties</strong> has the following characteristics:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Characteristic</th>
+<th align="left">Value</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">maxspeed</td>
+<td align="left"><code>80</code></td>
+<td align="left">double</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">Maximum speed for the mode on the link segment type</td>
+</tr>
+<tr>
+<td align="left">critspeed</td>
+<td align="left"><code>60</code></td>
+<td align="left">double</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">Speed for the mode under capacity flow conditions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xml-elements">XML Elements</h2>
+<p>This section discusses the XML elements under the <code>&lt;macroscopicnetwork&gt;</code> root element in expected order of appearance.</p>
+<h2 id="configuration"><strong>&lt;configuration&gt;</strong></h2>
+<p>Optional configuration of the physical road network. When not specified, the <a href="./#default-mode">default mode</a> will be activated. This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-modes"><code>&lt;modes&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Modes available in this network</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-modes">&lt;&gt; <strong>&lt;modes&gt;</strong></h3>
+<p>Modes available in this project. When absent the <a href="./#default-mode">default mode</a> is created. This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-mode"><code>&lt;mode&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">unbounded</td>
+<td align="left">Mode information</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-mode">&lt;&gt;&lt;&gt; <strong>&lt;mode&gt;</strong></h3>
+<p>A user can specify a mode either by referring to an existing <a href="./#available-predefined-modes">predefined PLANit mode</a> by simply referencing it&rsquo;s name and leave out all other attributes because these will be auto-populated.</p>
+<p>Alternatively, you can create your own custom mode, in which case you should <strong>not</strong> use one of the predefined mode&rsquo;s protected names. If you do, the other attributes that you specify will be ignored and the predefined mode&rsquo;s defaults will be applied instead. When you create a custom mode, simply choose an appropriate name and provide all attributes so that PLANit knows how to populate the mode&rsquo;s fields.</p>
+<p>The mode&rsquo;s (XML) identifier is set through an attribute</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">User identifier for the mode, i.e., its XML id</td>
+</tr>
+<tr>
+<td align="left"><code>externalid</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">optional third party identifier</td>
+</tr>
+</tbody>
+</table>
+<p>Each mode can have a description(name) and pcu value. These are configured via simple elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;name&gt;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">Description of the mode</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;maxspeed&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">NO</td>
+<td align="left">80.0</td>
+<td align="left">maximum speed of the mode</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;pcu&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>pcu</code></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Pcu value of the mode</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-physicalfeatures"><code>&lt;physicalfeatures&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Physical features of this mode</td>
+</tr>
+<tr>
+<td align="left"><a href="./#-usabilityfeatures"><code>&lt;usabilityfeatures&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Usability features of this mode</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-physicalfeatures">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;physicalfeatures&gt;</strong></h3>
+<p>A mode is characterised by a number of physical features. In PLANit we distinguish three main physical features, each of which has various options.</p>
+<ul>
+<li>Vehicular type: is the mode represented by a vehicle or not</li>
+<li>Motorisation type: does the mode have a motor or not</li>
+<li>track type: does the mode use the road or rail to propagate</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">options</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vehiculartype</td>
+<td align="left"><code>&quot;vehicle&quot;</code>,<code>&quot;no_vehicle&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;vehicle&quot;</code></td>
+</tr>
+<tr>
+<td align="left">motorisationtype</td>
+<td align="left"><code>&quot;motorised&quot;</code>,<code>&quot;non_motorised&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;motorised&quot;</code></td>
+</tr>
+<tr>
+<td align="left">tracktype</td>
+<td align="left"><code>&quot;road&quot;</code>,<code>&quot;rail&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;road&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-usabilityfeatures">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;usabilityfeatures&gt;</strong></h3>
+<p>How a mode is used is defined by this element. Currently, the usability features comprise of</p>
+<ul>
+<li>usedTo type: how is this mode used</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">options</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">usedtotype</td>
+<td align="left"><code>&quot;private&quot;</code>,<code>&quot;public&quot;</code>,<code>&quot;goods&quot;</code>,<code>&quot;ride_share&quot;</code>,<code>&quot;high_occupancy&quot;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;private&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="infrastructurelayers">&lt;infrastructurelayers&gt;</h2>
+<p>The infrastructure layers element contains all the physical network infrastructure (layers) available. It consists of one or more layers, each containing for example nodes, links, and link segments. An optional Spatial Reference System (SRS) SRID string can be provided across all layers here to identify how to interpret the geo-spatial location information embedded in the elements via GML.</p>
+<p>The SRS identifier is set through an attribute. When absent WGS84 is assumed for geo-information</p>
+<blockquote>
+<p>Geo-location information can be left out, but in that case, it is expected the user explicitly sets the lengths on all link (segments) since they cannot be computed based on the SRS.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>srsname</code></td>
+<td align="left">string</td>
+<td align="left"><code>SRS</code></td>
+<td align="left">NO</td>
+<td align="left">Spatial Reference System SRID</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-layer"><code>&lt;layer&gt;</code></a></td>
+<td align="left">YES</td>
+<td align="left">unbounded</td>
+<td align="left">infrastructure layer, representation of network for one or more modes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layer">&lt;layer&gt;</h3>
+<p>Each infrastructure layer uniquely defines the physical environment supporting one or more modes. Each layer has its own configuration regarding for example the link segment types it supports.</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Unique identifier for the layer, i.e., XML id</td>
+</tr>
+<tr>
+<td align="left"><code>externalid</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">third party identifier for the layer</td>
+</tr>
+<tr>
+<td align="left"><code>modes</code></td>
+<td align="left">string (comma separated)</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">comma separated string of mode (XML) ids</td>
+</tr>
+</tbody>
+</table>
+<p>The modes attributes should reference one or more of the modes defined under <code>&lt;configuration&gt;</code> in a comma separated fashion, e.g., <code>modes=&quot;car,bus&quot;</code>. A mode supported can only be supported by one layer and one layer only. In case the <code>modes</code> attribute is absent, it is assumed only a single layer is present an all modes are supported by this layer by default.</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-layerconfiguration"><code>&lt;layerconfiguration&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">layer specific configuration, e.g., link segment types</td>
+</tr>
+<tr>
+<td align="left"><a href="./#-nodes"><code>&lt;nodes&gt;</code></a></td>
+<td align="left">YES</td>
+<td align="left">1</td>
+<td align="left">Nodes container element, for all physical network nodes</td>
+</tr>
+<tr>
+<td align="left"><a href="./#-links"><code>&lt;links&gt;</code></a></td>
+<td align="left">YES</td>
+<td align="left">1</td>
+<td align="left">Nodes container element, for all physical network nodes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-layerconfiguration">&lt;&gt; <strong>&lt;layerconfiguration&gt;</strong></h3>
+<p>The optional layer configuration allows one to define the link segment types available to this layer, where a link segment type outlines how the various mode behave on a link segment that utilises it. The types defined under this configuration can only reference modes supported by the layer at hand. When not specified, the <a href="./#default-link-segment-type">default link segment type</a> will be activated. This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-linksegmenttypes"><code>&lt;linksegmenttypes&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Link segment type available in this network</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-linksegmenttypes">&lt;&gt; <strong>&lt;linksegmenttypes&gt;</strong></h3>
+<p>Link segment types define the different types of link segment properties that can be attributed to links on the layer, including mode specific attributes.This is useful to attach a set of common properties to multiple links by referring to the same link segment type.</p>
+<p>When absent a <a href="./#default-link-segment-type">default link segments type</a> is created and applied to all link segments in the network (layer).</p>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-linksegmenttype"><code>&lt;linksegmenttype&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">unbounded</td>
+<td align="left">Definition of a link segment type available in the network</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-linksegmenttype">&lt;&gt;&lt;&gt; <strong>&lt;linksegmenttype&gt;</strong></h3>
+<p>Link segment type defines a set of properties that can be attached to one or more link segments on the layer.</p>
+<p>The Link segment type&rsquo;s (XML) identifier is set through an attribute</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">User identifier for the link segment type, i.e., its XML id</td>
+</tr>
+<tr>
+<td align="left"><code>externalid</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">optional third party identifier</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following simple-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;name&gt;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">Description of the link segment type</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;maxdensitylane&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>pcu/km/l</code></td>
+<td align="left">NO</td>
+<td align="left">180</td>
+<td align="left">maximum density per km per lane</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;capacitylane&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>pcu/h/l</code></td>
+<td align="left">NO</td>
+<td align="left">1800</td>
+<td align="left">Capacity flow rate per hour lane</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-access"><code>&lt;access&gt;</code></a></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Modes with access to link segments with this type (and with specific settings)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-access">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;access&gt;</strong></h3>
+<p>Modes allowed access for the link segment type. For each specified mode, dedicated properties for this link segment type can be specified.</p>
+<p>When absent, all available <strong>road based</strong> modes are assumed to be allowed based on their properties, (possibly dynamically constrained by the physical link properties). when present, at least a single mode sub-element must be present.</p>
+<blockquote>
+<p>link segment types that represent rail, typically only allow a single rail based mode and typically do not allow road based modes. Therefore, we expect the user to explicitly include rail based modes at all times. When
+no modes are defined, <strong>rail based</strong> modes are <strong>not</strong> allowed, in contrast to road based modes.</p>
+</blockquote>
+<blockquote>
+<p>In the special case a link segment allows both rail and road based modes, e.g., trams and cars, then, all modes that are allowed must be specified, not only the rail based modes.</p>
+</blockquote>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-mode-1"><code>&lt;mode&gt;</code></a></td>
+<td align="left">YES</td>
+<td align="left">unbounded</td>
+<td align="left">Mode allowed on link segments with this type (and with specific settings)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-mode-1">&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;mode&gt;</strong></h3>
+<p>Mode allowed for the link segment type. Dedicated properties for this link segment type are specified here.</p>
+<blockquote>
+<p>The maximum speed that is eventually applied to a mode on a link segment is the minimum of the three available maximum speeds: (i) the physical speed limit on the link segment, (ii) the mode&rsquo;s maximum speed identified on the global definition for the mode, (iii) the maximum speed imposed via these mode properties specific to the link segment type applied to the link segment.</p>
+</blockquote>
+<p>The Link segment type&rsquo;s mode reference (XML) identifier is set through an attribute:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>ref</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Mode XML id reference, when &lsquo;0&rsquo; it represents all available modes</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following simple-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;maxspeed&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">NO</td>
+<td align="left">mode&rsquo;s maximum speed</td>
+<td align="left">maximum speed of this mode on links of this link segment type</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;critspeed&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>km/h/</code></td>
+<td align="left">NO</td>
+<td align="left">60</td>
+<td align="left">critical speed (at capacity) of this mode on links of this segment type</td>
+</tr>
+</tbody>
+</table>
+<p>When the max speed is absent it takes on the mode&rsquo;s maximum speed limit.</p>
+<h3 id="-nodes">&lt;&gt; <strong>&lt;nodes&gt;</strong></h3>
+<p>Nodes represent the locations where links (roads) intersect and traffic interacts with each other. This container holds all the node specifications for the network</p>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="./#-node"><code>&lt;node&gt;</code></a></td>
+<td align="left">YES</td>
+<td align="left">unbounded</td>
+<td align="left">Node element, defining a single node in the physical network</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-node">&lt;&gt;&lt;&gt; <strong>&lt;node&gt;</strong></h3>
+<p>A node represents a point location in space, used to inter-connect links. It can have a name and unique geo-location based on its SRS. 
+It also must have a unique identifier (XML id) available as an attribute:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Unique user identifier for the node, i.e., xml id</td>
+</tr>
+<tr>
+<td align="left"><code>externalid</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">optional third party identifier</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following simple-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;name&gt;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">Description for the node</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;gml:Point&gt;</code></td>
+<td align="left">No</td>
+<td align="left">1</td>
+<td align="left">Point location of the node in gml:point format</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>In its simplest form the <code>&lt;gml:Point&gt;</code> element has a single sub-element <code>&lt;gml:pos&gt;</code> containing two doubles separated by a space, see example below. For a detailed description of the gml:point element, please consult the latest official GML documentation</p>
+</blockquote>
+<blockquote>
+<p>In PLANit, we do not allow separate SRS definitions per <code>&lt;gml:Point&gt;</code>, even though the specification of GML allows this. Therefore, make sure you do not define the <code>srsName=</code> attribute on any <code>&lt;gml:Point&gt;</code> embedded in PLANit XML files.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#8f5902;font-style:italic">&lt;!--  example of node with basic gml:point and gml:pos location information --&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;node</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span> 																
+	<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>George Street roundabout<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span> 							
+    <span style="color:#204a87;font-weight:bold">&lt;gml:Point&gt;</span> 															
+        <span style="color:#204a87;font-weight:bold">&lt;gml:pos&gt;</span>150.512796 -34.900145<span style="color:#204a87;font-weight:bold">&lt;/gml:pos&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/gml:Point&gt;</span>														
+<span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
+
+</code></pre></div><h3 id="-links">&lt;&gt; <strong>&lt;links&gt;</strong></h3>
+<p>Links are non-directional connections between two nodes. Each link can hold two link segments, where each link segment has a single (opposing) direction.</p>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;link&gt;</code></td>
+<td align="left">No</td>
+<td align="left">unbounded</td>
+<td align="left">Representation  of a single link</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-link">&lt;&gt;&lt;&gt; <strong>&lt;link&gt;</strong></h3>
+<p>A links is a non-directional connection between two nodes (node a and node b). A link can hold two link segments, where each link segment has a single (opposing) direction. IT can also hold a geometry in the form of a gml:LineString. This geometry (if present) is used in combination with the SRS to extract the link length which is applied to the link and its two link segments. Alternatively, a length can be provided directly, overruling the geo-spatial length.</p>
+<blockquote>
+<p>In case the end and start coordinates of the geometry do not match the node locations, the node locations are added as additional locations at the start/end of the line string during the parsing process to ensure a valid connected network geometry.</p>
+</blockquote>
+<p>It has a unique user defined identifier, i.e., (XML) id that is set via an attribute, the same goes for the referencing of the a and b nodes that must refer to an existing <a href="./#-node">node</a> (XML) id:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Unique user identifier for the link, i.e., XML id</td>
+</tr>
+<tr>
+<td align="left"><code>externalid</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">optional third party identifier</td>
+</tr>
+<tr>
+<td align="left"><code>nodearef</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Reference to node (XML) id for the a node</td>
+</tr>
+<tr>
+<td align="left"><code>nodebref</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Reference to node (XML) id for the b node</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following simple-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;name&gt;</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left"><code>&quot;&quot;</code></td>
+<td align="left">Description for the link</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;length&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>km</code></td>
+<td align="left">NO</td>
+<td align="left"><code>N/A</code></td>
+<td align="left">Sets the length of the link and its segments, overrules geo-spatial length extracted from gml:LineString</td>
+</tr>
+</tbody>
+</table>
+<p>This element has the following sub-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Element Name</th>
+<th align="left">Compulsory</th>
+<th align="left">Maximum occurrences</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;linksegment&gt;</code></td>
+<td align="left">YES</td>
+<td align="left">2</td>
+<td align="left">Representation  of a single link segment in a particular direction</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;gml:LineString&gt;</code></td>
+<td align="left">No</td>
+<td align="left">1</td>
+<td align="left">Geometry of the link, can be used to extract its length and pass it on to the link segments</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>In its simplest form the <code>&lt;gml:LineString&gt;</code> element has a single sub-element <code>&lt;gml:coordinates&gt;</code> , see example below. For a detailed description of the gml:LineString element, please consult the latest official GML documentation</p>
+</blockquote>
+<blockquote>
+<p>In PLANit, we do not allow separate SRS definitions per <code>&lt;gml:LinkString&gt;</code>, even though the specification of GML allows this. Therefore, make sure you do not define the <code>srsName=</code> attribute on any <code>&lt;gml:gml:LineString&gt;</code> embedded in PLANit XML files.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#8f5902;font-style:italic">&lt;!--  Example of link with gml:LineString and gml:coordinates location information 
+</span><span style="color:#8f5902;font-style:italic">	Note: You define a separator within a pair that represent a single point on the line with &#34;ts&#34; (tuple separator) and
+</span><span style="color:#8f5902;font-style:italic">	the separator between tuples via cs, here a comma for tuples and a space between tuples are used.
+</span><span style="color:#8f5902;font-style:italic">--&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;link</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span> <span style="color:#c4a000">nodearef=</span><span style="color:#4e9a06">&#34;1&#34;</span> <span style="color:#c4a000">nodebref=</span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>Broadway<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>			
+	<span style="color:#204a87;font-weight:bold">&lt;linksegment</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span> <span style="color:#c4a000">dir=</span><span style="color:#4e9a06">&#34;a_b&#34;</span> <span style="color:#c4a000">typeref=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>	
+		<span style="color:#204a87;font-weight:bold">&lt;numberoflanes&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/numberoflanes&gt;</span>								
+	<span style="color:#204a87;font-weight:bold">&lt;/linksegment&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;linksegment</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;2&#34;</span> <span style="color:#c4a000">dir=</span><span style="color:#4e9a06">&#34;b_a&#34;</span> <span style="color:#c4a000">typeref=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;numberoflanes&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/numberoflanes&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;/linksegment&gt;</span>					
+	<span style="color:#204a87;font-weight:bold">&lt;gml:LineString&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;gml:coordinates</span> <span style="color:#c4a000">cs=</span><span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#c4a000">ts=</span><span style="color:#4e9a06">&#34;,&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>100,200 150,300<span style="color:#204a87;font-weight:bold">&lt;/gml:coordinates&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;/gml:LineString&gt;</span>									
+<span style="color:#204a87;font-weight:bold">&lt;/link&gt;</span>
+</code></pre></div><h3 id="-linksegment">&lt;&gt;&lt;&gt;&lt;&gt; <strong>&lt;linksegment&gt;</strong></h3>
+<p>A link segment is a directional connection between two nodes (node a and node b). This direction can be from a to b, or b to a depending on the configuration. There can however only be a single link segment in either direction for each link. In addition, a physical maximum speed can be defined as well as the number of lanes available. Lastly, each link segment can have exactly one link segment type, this type must be present, unless no link segment types have been defined on the network at all. In that case it can be omitted and the auto-generated default link segment type will automatically be attached to it.</p>
+<p>The direction is specified as an attribute, and each link segment has a unique user defined identifier, i.e., (external) id that is set via an attribute:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML attribute Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>id</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Unique user identifier for the link segment, i.e., XML id</td>
+</tr>
+<tr>
+<td align="left"><code>externalid</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">optional third party identifier</td>
+</tr>
+<tr>
+<td align="left"><code>dir</code></td>
+<td align="left"><code>&quot;a_b&quot;</code> or <code>&quot;b_a&quot;</code></td>
+<td align="left"><code>None</code></td>
+<td align="left">YES</td>
+<td align="left">Direction from node (a or b) to node (b or a)</td>
+</tr>
+<tr>
+<td align="left"><code>typeref</code></td>
+<td align="left">string</td>
+<td align="left"><code>None</code></td>
+<td align="left">YES<sup>*</sup></td>
+<td align="left">link segment type&rsquo;s (XML) id reference</td>
+</tr>
+</tbody>
+</table>
+<p><sup>*</sup> Compulsory, unless no link segment types are defined, in that case it must be omitted</p>
+<p>This element has the following simple-elements:</p>
+<table>
+<thead>
+<tr>
+<th align="left">XML Simple Element Name</th>
+<th align="left">type</th>
+<th align="left"><a href="../../../../units">Unit</a></th>
+<th align="left">Compulsory</th>
+<th align="left">Default value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>&lt;numberoflanes&gt;</code></td>
+<td align="left">integer</td>
+<td align="left"><code>None</code></td>
+<td align="left">NO</td>
+<td align="left">1</td>
+<td align="left">Number of lanes on the link segment</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;maxspeed&gt;</code></td>
+<td align="left">double</td>
+<td align="left"><code>km/h</code></td>
+<td align="left">NO</td>
+<td align="left"></td>
+<td align="left">Maximum speed limit imposed on the link segment</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>If the maximum speed limit is larger than the respective maximum speed for a mode on the referenced link segment type, the most restrictive speed is used as the maximum speed for the link segment for that mode, i.e., in this case the link segment type&rsquo;s speed limit. This to prevent inconsistencies during the model run.</p>
+</blockquote>
+<h2 id="expanded-example">Expanded Example</h2>
+<p>Below you will find an expanded example where all elements and attributes are explicitly set, to give you an idea of the overall structure of the macroscopic network XML. This example does not make sense as an actual input file, it is purely meant to show off all aspects of the file, rather than be used as a practically feasible input file.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;macroscopicnetwork</span>
+	 <span style="color:#c4a000">xmlns:xsi=</span><span style="color:#4e9a06">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+	 <span style="color:#c4a000">xmlns:gml=</span><span style="color:#4e9a06">&#34;http://www.opengis.net/gml&#34;</span>											
+	 <span style="color:#c4a000">xsi:noNamespaceSchemaLocation=</span><span style="color:#4e9a06">&#34;&lt;path_to_schema&gt;/macroscopicnetworkinput.xsd&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>																		
+		<span style="color:#204a87;font-weight:bold">&lt;modes&gt;</span>																			
+			<span style="color:#204a87;font-weight:bold">&lt;mode</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;car&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>																
+				<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>car mode<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>														
+				<span style="color:#204a87;font-weight:bold">&lt;pcu&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/pcu&gt;</span>																				
+			<span style="color:#204a87;font-weight:bold">&lt;/mode&gt;</span>										
+		<span style="color:#204a87;font-weight:bold">&lt;/modes&gt;</span>					
+	<span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;infrastructurelayers</span> <span style="color:#c4a000">srsname=</span><span style="color:#4e9a06">&#34;EPSG:4326&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;layer</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;road&#34;</span> <span style="color:#c4a000">modes=</span><span style="color:#4e9a06">&#34;car&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+			<span style="color:#204a87;font-weight:bold">&lt;layerconfiguration&gt;</span>
+				<span style="color:#204a87;font-weight:bold">&lt;linksegmenttypes&gt;</span>																
+					<span style="color:#204a87;font-weight:bold">&lt;linksegmenttype</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>													
+						<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>local road<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>													
+						<span style="color:#204a87;font-weight:bold">&lt;maxdensitylane&gt;</span>180<span style="color:#204a87;font-weight:bold">&lt;/maxdensitylane&gt;</span>									
+						<span style="color:#204a87;font-weight:bold">&lt;capacitylane&gt;</span>2000<span style="color:#204a87;font-weight:bold">&lt;/capacitylane&gt;</span>										
+						<span style="color:#204a87;font-weight:bold">&lt;access&gt;</span>
+							<span style="color:#204a87;font-weight:bold">&lt;mode</span> <span style="color:#c4a000">ref=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>															
+								<span style="color:#204a87;font-weight:bold">&lt;maxspeed&gt;</span>40<span style="color:#204a87;font-weight:bold">&lt;/maxspeed&gt;</span>											
+								<span style="color:#204a87;font-weight:bold">&lt;critspeed&gt;</span>35<span style="color:#204a87;font-weight:bold">&lt;/critspeed&gt;</span>										
+							<span style="color:#204a87;font-weight:bold">&lt;/mode&gt;</span>				
+						<span style="color:#204a87;font-weight:bold">&lt;/access&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;/linksegmenttype&gt;</span>
+				<span style="color:#204a87;font-weight:bold">&lt;/linksegmenttypes&gt;</span>
+			<span style="color:#204a87;font-weight:bold">&lt;/layerconfiguration&gt;</span>												
+			<span style="color:#204a87;font-weight:bold">&lt;nodes&gt;</span>
+				<span style="color:#204a87;font-weight:bold">&lt;node</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span> 																
+					<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>George Street roundabout<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;gml:Point&gt;</span>
+						<span style="color:#204a87;font-weight:bold">&lt;gml:pos&gt;</span>150.512796 -34.900145<span style="color:#204a87;font-weight:bold">&lt;/gml:pos&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;/gml:Point&gt;</span>														
+				<span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
+				<span style="color:#204a87;font-weight:bold">&lt;node</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span> 
+					<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>Broadway intersection<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;gml:Point&gt;</span>
+						<span style="color:#204a87;font-weight:bold">&lt;gml:pos&gt;</span>150.512527 -34.900319<span style="color:#204a87;font-weight:bold">&lt;/gml:pos&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;/gml:Point&gt;</span> 					
+				<span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>				
+			<span style="color:#204a87;font-weight:bold">&lt;/nodes&gt;</span>		
+			<span style="color:#204a87;font-weight:bold">&lt;links&gt;</span>
+				<span style="color:#204a87;font-weight:bold">&lt;link</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span> <span style="color:#c4a000">nodearef=</span><span style="color:#4e9a06">&#34;1&#34;</span> <span style="color:#c4a000">nodebref=</span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>							
+					<span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>Broadway<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>												
+					<span style="color:#204a87;font-weight:bold">&lt;linksegment</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;1&#34;</span> <span style="color:#c4a000">dir=</span><span style="color:#4e9a06">&#34;a_b&#34;</span> <span style="color:#c4a000">typeref=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>	
+						<span style="color:#204a87;font-weight:bold">&lt;numberoflanes&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/numberoflanes&gt;</span>			
+						<span style="color:#204a87;font-weight:bold">&lt;maxspeed&gt;</span>50<span style="color:#204a87;font-weight:bold">&lt;/maxspeed&gt;</span>												
+					<span style="color:#204a87;font-weight:bold">&lt;/linksegment&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;linksegment</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;2&#34;</span> <span style="color:#c4a000">dir=</span><span style="color:#4e9a06">&#34;b_a&#34;</span> <span style="color:#c4a000">typeref=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+						<span style="color:#204a87;font-weight:bold">&lt;numberoflanes&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/numberoflanes&gt;</span>
+						<span style="color:#204a87;font-weight:bold">&lt;maxspeed&gt;</span>50<span style="color:#204a87;font-weight:bold">&lt;/maxspeed&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;/linksegment&gt;</span>					
+					<span style="color:#204a87;font-weight:bold">&lt;gml:LineString&gt;</span>									
+						<span style="color:#204a87;font-weight:bold">&lt;gml:coordinates</span> <span style="color:#c4a000">cs=</span><span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#c4a000">ts=</span><span style="color:#4e9a06">&#34;,&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>100,200 150,300<span style="color:#204a87;font-weight:bold">&lt;/gml:coordinates&gt;</span>
+					<span style="color:#204a87;font-weight:bold">&lt;/gml:LineString&gt;</span>	
+					<span style="color:#204a87;font-weight:bold">&lt;length</span> <span style="color:#c4a000">unit=</span><span style="color:#4e9a06">&#34;km&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>1.33<span style="color:#204a87;font-weight:bold">&lt;/length&gt;</span>									
+				<span style="color:#204a87;font-weight:bold">&lt;/link&gt;</span>
+			<span style="color:#204a87;font-weight:bold">&lt;/links&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;/layer&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;/infrastructurelayers&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/macroscopicnetwork&gt;</span>
+</code></pre></div>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified January 1, 0001
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <script src="//yihui.org/js/math-code.js"></script>
+<script async
+src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/trafficplanit">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2021 PLANit development team All Rights Reserved</small>
+	
+		<p class="mt-2"><a href="/version/0_1_0/about/">About PLANit</a></p>
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<script src="/version/0_1_0/js/main.min.d420c12d117ee3a00de725d3a9b742c84b945713ed36767a8d0448aaa2f5adb9.js" integrity="sha256-1CDBLRF&#43;46AN5yXTqbdCyEuUVxPtNnZ6jQRIqqL1rbk=" crossorigin="anonymous"></script>
+
+
+
+  </body>
+</html>
