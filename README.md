@@ -1,7 +1,7 @@
 # PLANitManual Version
 Repository for hosting all released PLANitManuals relating to a particular version
 
-The manual for the version that is currently in development can be found
- under [https:trafficplanit.github.io/PLANitManual](https:trafficplanit.github.io/PLANitManual)  
- All other versions are available under their specific subdirectories in this repository which are published under
+Thelanding page for PLANit and all older versions is [http://www.goplanit.org](http://www.goplanit.org)  
+
+Older versions are also directly available as a github pages website under their specific version numbers
  https:planitmanual.github.io/version/the_version_number
