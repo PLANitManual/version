@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.118.2">
+<link rel="alternate" type="application/rss&#43;xml" href="https://planitmanual.github.io/version/0_3_0/installation/planit-java/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/version/0_3_0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/version/0_3_0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/version/0_3_0/favicons/android-192x192.png" sizes="192x192">
+
+<title>PLANit-Java | </title>
+<meta name="description" content="">
+<meta property="og:title" content="PLANit-Java" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://planitmanual.github.io/version/0_3_0/installation/planit-java/" />
+<meta itemprop="name" content="PLANit-Java">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PLANit-Java"/>
+<meta name="twitter:description" content=""/>
+
+
+
+
+
+<link href="/version/0_3_0/scss/main.css" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+	<a class="navbar-brand" href="/version/0_3_0/">
+		<span class="navbar-logo"><img src="/version/0_3_0/img/PLANit_icon.png"></span><span class="text-uppercase font-weight-bold"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/version/0_3_0/about/" ><span>About</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/version/0_3_0/installation/" ><span class="active">Installation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/version/0_3_0/docs/" ><span>Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/version/0_3_0/community/" ><span>Community</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://www.goplanit.org/">development</a></li>
+    <li><a class="dropdown-item" href="https://planitmanual.github.io/version/0_1_0">v0.1.0</a></li>
+    <li><a class="dropdown-item" href="https://planitmanual.github.io/version/0_2_0">v0.2.0</a></li>
+    <li><a class="dropdown-item" href="https://planitmanual.github.io/version/0_3_0">v0.3.0</a></li>
+    <li><a class="dropdown-item" href="https://planitmanual.github.io/version/0_4_0">v0.4.0</a></li>
+    </ul>
+</div>
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-version0_3_0installation-li">
+  <a href="/version/0_3_0/installation/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-version0_3_0installation"><span class="">Installation</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-version0_3_0installationplanit-java-li">
+  <input type="checkbox" id="m-version0_3_0installationplanit-java-check" checked/>
+  <label for="m-version0_3_0installationplanit-java-check"><a href="/version/0_3_0/installation/planit-java/" class="align-left ps-0  active td-sidebar-link td-sidebar-link__section" id="m-version0_3_0installationplanit-java"><span class="td-sidebar-nav-active-item">PLANit-Java</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-version0_3_0installationplanit-python-li">
+  <input type="checkbox" id="m-version0_3_0installationplanit-python-check"/>
+  <label for="m-version0_3_0installationplanit-python-check"><a href="/version/0_3_0/installation/planit-python/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-version0_3_0installationplanit-python"><span class="">PLANit-Python</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a>
+      <ul>
+        <li><a href="#installing-java">Installing Java</a></li>
+        <li><a href="#installing-eclipse">Installing Eclipse</a></li>
+        <li><a href="#setting-up-planit-java">Setting up PLANit-Java</a></li>
+      </ul>
+    </li>
+    <li><a href="#getting-started">Getting Started</a></li>
+  </ul>
+</nav>
+      </div>
+    
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="https://planitmanual.github.io/version/0_3_0/installation/">Installation</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    PLANit-Java</li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>PLANit-Java</h1>
+        
+	
+	<p>In this section we detail how to install PLANit-Java.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>Java 11</strong> or higher
+<ul>
+<li>It likely also works with Java 8 or higher, but this is not tested</li>
+</ul>
+</li>
+<li>A Java compatible IDE such as <strong>Eclipse</strong>, or <strong>IntelliJ</strong></li>
+</ul>
+<h3 id="installing-java">Installing Java</h3>
+<p>For <em><strong>personal use and academics</strong></em> it is easiest to stick to the Oracle implementation since these are up to data and free of charge for non-commercial use. Java 11 can be downloaded from:</p>
+<ul>
+<li><a href="http://jdk.java.net/java-se-ri/11">Oracle open JDK</a></li>
+</ul>
+<p><em><strong>Commercial use</strong></em> if you want to use PLANit-Python, extend it, and embed it in a commercial product, you best avoid using the Oracle Java implementation unless you are willing to pay a subscription fee or get into trouble later down the road because of proprietary components even in their openJDK implementation. No worries though, there are other capable open-source openJDK implementations. Some links below:</p>
+<ul>
+<li><a href="https://openjdk.java.net/">Unix/Linux based openjdk distributions</a></li>
+<li><a href="https://adoptopenjdk.net">adoptopenJDK</a> for Windows and Mac</li>
+</ul>
+<p>After the download, install Java and add it to your path. In case you did not include it in the path during installation; here are the steps to do so manually:</p>
+<p><strong>Windows:</strong></p>
+<ol>
+<li>Locate the installation directory of Java</li>
+<li>Find and open the &rsquo;environment variables&rsquo; window, for example via the control panel</li>
+<li>Under the system variables, find the &lsquo;path&rsquo; entry. Open it, and add a new line with the installation directory of Java supplemented with <code>/bin</code> since the executables we want on the path are in the <code>/bin</code> directory</li>
+<li>Apply the changes, close your console window</li>
+</ol>
+<p><strong>Mac:</strong></p>
+<ol>
+<li>Locate the installation directory of Java</li>
+<li>Open a terminal and enter : sudo nano /etc/paths. Enter your password when prompted. (nano is a text editor to edit the path in)</li>
+<li>The directories currently part of your PATH appear, now add a new line with the installation directory of Java supplemented with <code>/bin</code> since the executables we want on the path are in the <code>/bin</code> directory.</li>
+<li>Press control + X to quit and Y to save changes</li>
+</ol>
+<p>Open a new console window, and try <code>java -showversion</code>, it should now show the version and some additional options</p>
+<h3 id="installing-eclipse">Installing Eclipse</h3>
+<p>Eclipse is a versatile Integrated Development Environment (IDE) with very good Java support. You can download it here (you likely want to go for the Eclipse IDE for Java Developers):</p>
+<ul>
+<li><a href="https://www.eclipse.org/downloads/packages/">Eclipse Java IDE</a></li>
+</ul>
+<blockquote>
+<p>You can of course use another IDE if you prefer (such as IntelliJ)</p>
+</blockquote>
+<h3 id="setting-up-planit-java">Setting up PLANit-Java</h3>
+<p>There are multiple ways to include PLANit into your Java project:</p>
+<ul>
+<li>Compile the sources yourself</li>
+<li>Download precompiled sources from this website</li>
+<li>Include PLANit repositories as Maven dependencies (<strong>recommended</strong>)</li>
+</ul>
+<h4 id="compiling-sources-yourself">Compiling sources yourself</h4>
+<p>To compile the sources yourself, head over to the <a href="../../community">community</a> section and follow the links to the source code repositories hosted on <a href="https://github.com/trafficplanit">GitHub</a>. In case trhe repository you&rsquo;re looking for is not (yet) public, please send an email with your request to <a href="mailto:info@goplanit.org">info@goplanit.org</a>.</p>
+<h4 id="download-precompiled-sources">download precompiled sources</h4>
+<p>For each release, we provide precompiled jars and sources on the website. To find the jars (and sources) first select the version you are after by going to the version specific website using the &ldquo;releases&rdquo; drop-down menu option in the top bar. Then go to the Documentation/PLANit-Java/Downloads section and you should find what you are looking for. Include the jars in your project and off you go!</p>
+<blockquote>
+<p>Make sure you also download the dependencies of each jar since they are not included. These can be found in the pom.xml file of each repository. Alternatively consider using Maven to build your project in which case you can add the dependencies there (which is much preferred)</p>
+</blockquote>
+<h4 id="add-planit-as-maven-dependency">Add PLANit as Maven dependency</h4>
+<p>The recommended way however to include PLANit in your workflow is to simply add it as a dependency via you Maven build process. Each PLANit repository has its own group id, artifact id and version to uniquely identify it. The projects are currently not (yet) hosted on Maven central or one of the other major repository locations. Instead, you will first need to add the PLANit repository to your pom by adding the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;repositories&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>planit-repository.goplanit.org<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>PLANit Repository<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;url&gt;</span>http://repository.goplanit.org<span style="color:#204a87;font-weight:bold">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/repository&gt;</span>   
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/repositories&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Now Maven will also look for repositories here and will find the recently released versions. To add specific dependencies to your project you then simply add them to your dependencies section of your pom via, for example,</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">&lt;!-- including planit-core v 0.4.0 as a dependencies --&gt;</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.goplanit<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>planit-core<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>0.4.0<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a40000">&lt;</span>/dependencies
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Below you will find the various PLANit repository dependencies snippets that can currently be used and are hosted on (repository.goplanit.org)[www.repository.goplanit.org].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Repo</th>
+<th style="text-align:left">GroupId</th>
+<th style="text-align:left">ArtifactId</th>
+<th style="text-align:left">Latest version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">PLANitParentPom</td>
+<td style="text-align:left"><code>org.goplanit.parentpom</code></td>
+<td style="text-align:left"><code>planit-parentpom</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitUtils</td>
+<td style="text-align:left"><code>org.goplanit.utils</code></td>
+<td style="text-align:left"><code>planit-utils</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANit</td>
+<td style="text-align:left"><code>org.goplanit</code></td>
+<td style="text-align:left"><code>planit-core</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitIO</td>
+<td style="text-align:left"><code>org.goplanit.io</code></td>
+<td style="text-align:left"><code>planit-io</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitXMLGenerator</td>
+<td style="text-align:left"><code>org.goplanit.xml</code></td>
+<td style="text-align:left"><code>planit-xml</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitOSM</td>
+<td style="text-align:left"><code>org.goplanit.osm</code></td>
+<td style="text-align:left"><code>planit-osm</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitMATSim</td>
+<td style="text-align:left"><code>org.goplanit.matsim</code></td>
+<td style="text-align:left"><code>planit-matsim</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitTNTP</td>
+<td style="text-align:left"><code>org.goplanit.tntp</code></td>
+<td style="text-align:left"><code>planit-tntp</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitGTFS</td>
+<td style="text-align:left"><code>org.goplanit.gtfs</code></td>
+<td style="text-align:left"><code>planit-gtfs</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitGeoIO</td>
+<td style="text-align:left"><code>org.goplanit.geoio</code></td>
+<td style="text-align:left"><code>planit-geoio</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left">PLANitJ2Py</td>
+<td style="text-align:left"><code>org.goplanit.python</code></td>
+<td style="text-align:left"><code>planit-j2py</code></td>
+<td style="text-align:left"><code>0.4.0</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note that many PLANit repos depend on other PLANit repos. These are automatically resolved by Maven, so you do not need
+to worry about them (unlike when using any of the other build options)</p>
+</blockquote>
+<h2 id="getting-started">Getting Started</h2>
+<p>Now that you have installed all the necessary components. Have a look at the <a href="../../docs/java/getting-started">Getting Started</a>,
+to create your first PLANit-Java application</p>
+
+        <div class="section-index">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top"></div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <script src="//yihui.org/js/math-code.js"></script>
+<script async
+src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/trafficplanit">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2023 PLANit development team All Rights Reserved</small>
+	
+		<p class="mt-2"><a href="/version/0_3_0/about/">About PLANit</a></p>
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+  <script src="/version/0_3_0/js/main.js"></script>
+<script defer src="/version/0_3_0/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/version/0_3_0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
